@@ -29,6 +29,8 @@ access_control:
       policy: one_factor
     - domain: secure.example.com
       policy: one_factor
+    - domain: dozzle.example.com
+      policy: one_factor  
 
 session:
   secret: unsecure_session_secret

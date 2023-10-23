@@ -11,7 +11,7 @@ users:
     disabled: false
     displayname: "Admin"
     password: "$argon2id$v=19$m=65536,t=3,p=4$x6gq7L9T0lDJRcSqODB05A$/LxrSs2aRPDLJzF5HjQcL5U7Cj1JrwMV/r7kBMkID10"
-    email: admin@example.com
+    email: findamir@gmail.com
     groups:
       - admins
       - dev

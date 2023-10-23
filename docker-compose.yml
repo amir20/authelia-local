@@ -80,19 +80,22 @@ services:
       - 80
     restart: unless-stopped
 
-  public:
-    image: traefik/whoami
-    container_name: public
+  dozzle:
+    image: amir20/dozzle:latest    
     networks:
       - net
+    environment:
+      DOZZLE_AUTH_PROVIDER: forward-proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock  
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.public.rule=Host(`public.example.com`)'
-      - 'traefik.http.routers.public.entrypoints=https'
-      - 'traefik.http.routers.public.tls=true'
-      - 'traefik.http.routers.public.tls.options=default'
-      - 'traefik.http.routers.public.middlewares=authelia@docker'
+      - 'traefik.http.routers.dozzle.rule=Host(`dozzle.example.com`)'
+      - 'traefik.http.routers.dozzle.entrypoints=https'
+      - 'traefik.http.routers.dozzle.tls=true'
+      - 'traefik.http.routers.dozzle.tls.options=default'
+      - 'traefik.http.routers.dozzle.middlewares=authelia@docker'
     expose:
-      - 80
+      - 8080
     restart: unless-stopped
 ...
